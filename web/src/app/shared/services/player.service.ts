@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ResponsePageable} from 'src/app/shared/models/responsePageable.models';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +19,7 @@ export class PlayerService {
     private httpClient: HttpClient
   ) { }
 
-  public getAll(flag: string): Observable<ResponsePageable> {
-    return this.httpClient.get<ResponsePageable>(this.apiUrl + flag);
+  public getAll(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.apiUrl);
   }
 }

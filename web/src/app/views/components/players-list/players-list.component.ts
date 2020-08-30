@@ -10,7 +10,7 @@ import { PlayersPalmeiras } from 'src/app/shared/models/playersPalmeiras.models'
 })
 export class PlayersListComponent implements OnInit {
 
-  players: PlayersPalmeiras[];
+  players: any[];
 
   constructor(
     public playerService: PlayerService
@@ -21,8 +21,8 @@ export class PlayersListComponent implements OnInit {
   }
 
   getPlayers() {
-    this.playerService.getAll('').subscribe(data => {
-      this.players = data.content;
+    this.playerService.getAll().subscribe(data => {
+      this.players = data;
 
       console.log(this.players);
     });
