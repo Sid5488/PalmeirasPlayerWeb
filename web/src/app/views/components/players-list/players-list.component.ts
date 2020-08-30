@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PlayerService } from 'src/app/shared/services/player.service';
-import { PlayersPalmeiras } from 'src/app/shared/models/playersPalmeiras.models';
 
 @Component({
   selector: 'app-players-list',
