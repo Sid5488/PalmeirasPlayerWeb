@@ -11,33 +11,42 @@
       <div style="margin: 0.5%;">
         <div class="container d-flex justify-content-center">
           <div class="col-12 col-md-8">
-            <form>
+            <form [formGroup]="playerForm">
               <input
                 class="form-control mt-2"
                 type="text"
+                name="name"
                 placeholder="Nome"
+                formControlName="name"
               >
 
               <input
                 class="form-control mt-2"
                 type="text"
+                name="playingPosition"
                 placeholder="Posição que joga"
+                formControlName="playingPosition"
               >
 
               <input
                 class="form-control mt-2"
-                type="text"
+                type="number"
+                name="shirtNumber"
                 placeholder="Número da Camisa"
+                formControlName="shirtNumber"
               >
 
               <input
                 class="form-control mt-2"
-                type="text"
+                type="number"
+                name="age"
                 placeholder="Idade"
+                formControlName="age"
               >
 
               <button
                 type="button"
+                (click)="createPlayer()"
                 class="btn btn-success mt-2 form-control"
               >Salvar</button>
             </form>
@@ -56,7 +65,8 @@
       <div style="margin: 0.5%;">
         <div class="container d-flex justify-content-center">
           <div class="col-12 col-8">
-            <table class="table table-bordered">
+            <mat-progress-bar *ngIf="!loading" mode="indeterminate"></mat-progress-bar>
+            <table *ngIf="loading" class="table table-bordered">
               <thead>
                 <tr>
                   <th>Nome</th>
@@ -66,39 +76,59 @@
                   <th>Ação</th>
                 </tr>
               </thead>
+
               <tbody>
-                <tr>
-                  <td>Teste</td>
-                  <td>ts</td>
-                  <td>10</td>
-                  <td>18</td>
-                  <td>
-                    <a href="/">Editar</a> |
-                    <a href="/">Apagar</a>
-                  </td>
-                </tr>
+                <ng-container *ngFor="let player of players">
+                  <tr>
+                    <td>
+                      <p>
+                        {{ player.name }}
+                      </p>
+                    </td>
 
-                <tr>
-                  <td>Teste</td>
-                  <td>ts</td>
-                  <td>10</td>
-                  <td>18</td>
-                  <td>
-                    <a href="/">Editar</a> |
-                    <a href="/">Apagar</a>
-                  </td>
-                </tr>
+                    <td>
+                      <p>
+                        {{ player.playingPosition }}
+                      </p>
+                    </td>
 
-                <tr>
-                  <td>Teste</td>
-                  <td>ts</td>
-                  <td>10</td>
-                  <td>18</td>
-                  <td>
-                    <a href="/">Editar</a> |
-                    <a href="/">Apagar</a>
-                  </td>
-                </tr>
+                    <td>
+                      <p>
+                        {{ player.shirtNumber }}
+                      </p>
+                    </td>
+
+                    <td>
+                      <p>
+                        {{ player.age }}
+                      </p>
+                    </td>
+
+                    <td class="d-flex justify-content-between">
+                      <a routerLink="/update/{{player.id}}">
+                        <button
+                          type="button"
+                          class="btn btn-warning"
+                          data-toggle="modal"
+                          data-target="#exampleModal"
+                        >
+                          Editar
+                        </button>
+                      </a>
+
+                      <a routerLink="/delete/{{player.id}}">
+                        <button
+                          type="button"
+                          class="btn btn-danger"
+                          data-toggle="modal"
+                          data-target="#exampleModal"
+                        >
+                          Apagar
+                        </button>
+                      </a>
+                    </td>
+                  </tr>
+                </ng-container>
               </tbody>
             </table>
           </div>

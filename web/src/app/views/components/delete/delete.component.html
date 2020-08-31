@@ -1,0 +1,75 @@
+
+<mat-tab-group
+  mat-align-tabs="start"
+  style="padding-top: 40px; padding-left: 2%; padding-right: 2%;"
+>
+  <mat-tab label="Apagar Jogador">
+    <div class="container center mt-5">
+      <h1>Deseja apagar esse jogador?</h1>
+    </div>
+    <div class="container d-flex justify-content-center">
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Posição que joga</th>
+            <th>Número da camisa</th>
+            <th>Idade</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <p>
+                {{ player.name }}
+              </p>
+            </td>
+
+            <td>
+              <p>
+                {{ player.playingPosition }}
+              </p>
+            </td>
+
+            <td>
+              <p>
+                {{ player.shirtNumber }}
+              </p>
+            </td>
+
+            <td>
+              <p>
+                {{ player.age }}
+              </p>
+            </td>
+
+            <td class="d-flex justify-content-between">
+              <a routerLink="/">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Cancelar
+                </button>
+              </a>
+
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="apagar()"
+                >
+                  Apagar
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+

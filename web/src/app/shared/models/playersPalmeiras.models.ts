@@ -3,5 +3,6 @@ export class PlayersPalmeiras {
   id: number;
   name: string;
   playingPosition: number;
+  shirtNumber: number;
   age: number;
 }
